@@ -17,26 +17,14 @@ final class GeoCodeTest extends TestCase
     }
 
     /**
-     * runs single unit tests for each point in every map with full geocodes
+     * runs single unit tests for each point in every map
      * @dataProvider provideMapData
      * @param $point
      * @param $area
      */
-    public function testPointWasPositionedCorrectlyWithFullGeocodes($point, $area)
+    public function testPointWasPositionedCorrectly($point, $area)
     {
         $result = TestCaseHelper::doTestCase($point, $area, false);
-        $this->assertSame("OK", $result['result'], strip_tags($result['html']));
-    }
-
-    /**
-     * runs single unit tests for each point in every map with shorter geocodes
-     * @dataProvider provideMapData
-     * @param $point
-     * @param $area
-     */
-    public function testPointWasPositionedCorrectlyWithShorterGeocodes($point, $area)
-    {
-        $result = TestCaseHelper::doTestCase($point, $area, true);
         $this->assertSame("OK", $result['result'], strip_tags($result['html']));
     }
 
@@ -50,10 +38,8 @@ final class GeoCodeTest extends TestCase
         $mapAreas = XmlHelper::parseAllAreas();
         $testCaseArray = array();
         foreach ($mapAreas as $singleMapTest) {
-            foreach ($singleMapTest['test_valid'] as $testPoint) {
-                $testCaseArray[$singleMapTest['mapname'] . " / " . $testPoint['name']] = array($testPoint, $singleMapTest['area']);
-            }
-            foreach ($singleMapTest['test_invalid'] as $testPoint) {
+            $testArray = array_merge($singleMapTest['test_valid'],$singleMapTest['test_invalid']);
+            foreach ($testArray as $testPoint) {
                 $testCaseArray[$singleMapTest['mapname'] . " / " . $testPoint['name']] = array($testPoint, $singleMapTest['area']);
             }
         }

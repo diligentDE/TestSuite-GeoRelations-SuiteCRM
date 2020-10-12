@@ -59,19 +59,12 @@ html;
      * decides per point if inside/outside area
      * @param $point
      * @param $area
-     * @param false $shorter_codes
      * @return string[]
      */
-    public static function doTestCase($point, $area, $shorter_codes = false)
+    public static function doTestCase($point, $area)
     {
         $lng = $point['lng'];
         $lat = $point['lat'];
-
-        //suite is using only 2 digits!
-        if ($shorter_codes === true) {
-            $lng = round($lng, 2);
-            $lat = round($lat, 2);
-        }
 
         $response = \GeometryLibrary\PolyUtil::containsLocation([
             'lng' => $lng,

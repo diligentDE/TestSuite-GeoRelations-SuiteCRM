@@ -12,7 +12,6 @@ $mapAreas = XmlHelper::parseAllAreas();
 $html = '';
 //run test case foreach map found in /maps/
 foreach ($mapAreas as $singleMapTest) {
-    $html .= TestCaseHelper::doMapTest($singleMapTest); // full geocodes
-    $html .= TestCaseHelper::doMapTest($singleMapTest, true); //same test cases with Suite's decimals (2 instead of 5)
+    $html .= TestCaseHelper::doMapTest($singleMapTest);
 }
 echo $html;
