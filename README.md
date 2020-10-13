@@ -9,3 +9,4 @@
 prerequisites:
 - enabled geo-coding
 - "composer require alexpechkarev/geometry-library" should have been executed in your SuiteCRM root folder
+- php7.3
