@@ -5,3 +5,7 @@
 - vendor/ is completely included, using
   - alexpechkarev/geometry-library (1.0.2)
   - phpunit/phpunit (9.4)
+
+prerequisites:
+- enabled geo-coding
+- "composer require alexpechkarev/geometry-library" should have been executed in your SuiteCRM root folder
