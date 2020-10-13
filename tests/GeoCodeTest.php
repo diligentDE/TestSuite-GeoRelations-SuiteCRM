@@ -39,8 +39,10 @@ final class GeoCodeTest extends TestCase
         $testCaseArray = array();
         foreach ($mapAreas as $singleMapTest) {
             $testArray = array_merge($singleMapTest['test_valid'],$singleMapTest['test_invalid']);
+            $i=0;
             foreach ($testArray as $testPoint) {
-                $testCaseArray[$singleMapTest['mapname'] . " / " . $testPoint['name']] = array($testPoint, $singleMapTest['area']);
+                $testCaseArray[$singleMapTest['mapname'] . " / " . $testPoint['name'] . "." . $i] = array($testPoint, $singleMapTest['area']);
+                $i++;
             }
         }
         return $testCaseArray;
